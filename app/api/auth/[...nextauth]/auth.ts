@@ -7,7 +7,7 @@ import {
 } from 'next-auth';
 
 import Auth0 from 'next-auth/providers/auth0';
-import { db } from './db';
+import { db } from '../db';
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
