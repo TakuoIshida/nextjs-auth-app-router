@@ -1,63 +1,36 @@
-import { Toaster } from 'react-hot-toast'
-import { GeistSans } from 'geist/font/sans'
-import { GeistMono } from 'geist/font/mono'
-
-import '@/app/globals.css'
-import { cn } from '@/lib/utils'
-import { TailwindIndicator } from '@/components/tailwind-indicator'
-import { Providers } from '@/components/providers'
-import { Header } from '@/components/header'
+import '@/app/globals.css';
+import { Providers } from '@/components/providers';
+import { getServerSession } from 'next-auth';
+import { authOptions } from './api/auth/auth';
 
 export const metadata = {
   metadataBase: new URL(`https://${process.env.VERCEL_URL}`),
   title: {
     default: 'Next.js AI Chatbot',
-    template: `%s - Next.js AI Chatbot`
+    template: `%s | Next.js AI Chatbot`,
   },
-  description: 'An AI-powered chatbot template built with Next.js and Vercel.',
+  description: 'TODO: description',
   icons: {
     icon: '/favicon.ico',
-    shortcut: '/favicon-16x16.png',
-    apple: '/apple-touch-icon.png'
-  }
-}
-
-export const viewport = {
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: 'white' },
-    { media: '(prefers-color-scheme: dark)', color: 'black' }
-  ]
-}
+  },
+};
 
 interface RootLayoutProps {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export default async function RootLayout({ children }: RootLayoutProps) {
+  const session = await getServerSession(authOptions);
+
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={cn(
-          'font-sans antialiased',
-          GeistSans.variable,
-          GeistMono.variable
-        )}
-      >
-        <Toaster />
-        <Providers
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <div className="flex flex-col min-h-screen">
-            {/* @ts-ignore */}
-            <Header />
+    <html lang="ja" suppressHydrationWarning>
+      <body>
+        <Providers session={session}>
+          <div>
             <main className="flex flex-col flex-1 bg-muted/50">{children}</main>
           </div>
-          <TailwindIndicator />
         </Providers>
       </body>
     </html>
-  )
+  );
 }

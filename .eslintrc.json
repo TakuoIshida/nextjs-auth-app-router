@@ -3,20 +3,11 @@
   "root": true,
   "extends": [
     "next/core-web-vitals",
-    "prettier",
-    "plugin:tailwindcss/recommended"
+    "prettier"
   ],
-  "plugins": ["tailwindcss"],
-  "rules": {
-    "tailwindcss/no-custom-classname": "off",
-    "tailwindcss/classnames-order": "off"
-  },
-  "settings": {
-    "tailwindcss": {
-      "callees": ["cn", "cva"],
-      "config": "tailwind.config.js"
-    }
-  },
+  "plugins": [],
+  "rules": {},
+  "settings": {},
   "overrides": [
     {
       "files": ["*.ts", "*.tsx"],

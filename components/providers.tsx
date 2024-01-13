@@ -1,17 +1,19 @@
-'use client'
+'use client';
 
-import * as React from 'react'
-import { ThemeProvider as NextThemesProvider } from 'next-themes'
-import { ThemeProviderProps } from 'next-themes/dist/types'
-import { SidebarProvider } from '@/lib/hooks/use-sidebar'
-import { TooltipProvider } from '@/components/ui/tooltip'
+import { SidebarProvider } from '@/lib/hooks/use-sidebar';
+import { Session } from 'next-auth';
+import { SessionProvider } from 'next-auth/react';
 
-export function Providers({ children, ...props }: ThemeProviderProps) {
+export async function Providers({
+  children,
+  session,
+}: {
+  children: React.ReactNode;
+  session: Session | null;
+}) {
   return (
-    <NextThemesProvider {...props}>
-      <SidebarProvider>
-        <TooltipProvider>{children}</TooltipProvider>
-      </SidebarProvider>
-    </NextThemesProvider>
-  )
+    <SessionProvider session={session}>
+      <SidebarProvider>{children}</SidebarProvider>
+    </SessionProvider>
+  );
 }

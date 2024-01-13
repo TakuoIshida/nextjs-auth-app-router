@@ -1,6 +1,6 @@
 'use client'
 
-import * as React from 'react'
+import React from 'react'
 
 const LOCAL_STORAGE_KEY = 'sidebar'
 
