@@ -17,6 +17,13 @@ export default function TopPage() {
       <p>{session.user?.name}</p>
       <p>{session.user?.email}</p>
       <button onClick={() => void signOut()}>signOut</button>
+      <button
+        onClick={() => {
+          throw new Error('worng');
+        }}
+      >
+        Error
+      </button>
     </div>
   );
 }
