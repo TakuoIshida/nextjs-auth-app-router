@@ -8,6 +8,7 @@ import { Callout, calloutLevel } from 'components/ui/callout';
 import { CheckBox } from 'components/ui/check-box';
 import { Dialog } from 'components/ui/dialog/dialog';
 import { HoverCard } from 'components/ui/hover-card';
+import { SearchTextField } from 'components/ui/search-text-field';
 import { SelectItems } from 'components/ui/select-items';
 import { Tabs } from 'components/ui/tabs';
 import { TextArea } from 'components/ui/text-area';
@@ -23,7 +24,7 @@ const Example = () => {
   const { isToastOpen, handleToastOpen } = useToast();
 
   return (
-    <div>
+    <>
       <Blockquote>
         Perfect typography is certainly the most elusive of all arts. Sculpture
       </Blockquote>
@@ -86,16 +87,18 @@ const Example = () => {
         labels={['apple', 'banana', 'orange']}
         onChange={(v) => console.log(v)}
       />
-      <div>
-        <Button
-          text={'open toast'}
-          onClick={() => {
-            console.log('open toast');
-            handleToastOpen('message', 'descriptionsss');
-          }}
-        />
-      </div>
-    </div>
+      <Button
+        text={'open toast'}
+        onClick={() => {
+          console.log('open toast');
+          handleToastOpen('message', 'descriptionsss');
+        }}
+      />
+      <SearchTextField
+        placeholder={'search'}
+        onChange={(e) => console.log(e)}
+      />
+    </>
   );
 };
 
