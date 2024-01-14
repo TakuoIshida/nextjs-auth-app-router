@@ -3,6 +3,7 @@
 import { Theme, ThemePanel } from '@radix-ui/themes';
 import '@radix-ui/themes/styles.css';
 import { ThemeProviderProps } from 'next-themes/dist/types';
+import { settings } from 'settings/settings';
 
 const ThemeProvider = ({ children }: ThemeProviderProps) => {
   return (
@@ -16,7 +17,7 @@ const ThemeProvider = ({ children }: ThemeProviderProps) => {
     >
       {children}
       {/*  NOTE: themeをpreviewするためのtool */}
-      <ThemePanel />
+      {settings.nodeEnv === 'development' && <ThemePanel />}
     </Theme>
   );
 };

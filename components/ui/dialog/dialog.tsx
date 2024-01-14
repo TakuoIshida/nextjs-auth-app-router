@@ -6,7 +6,8 @@ import {
   Button as RadixButton,
   Dialog as RadixDialog,
 } from '@radix-ui/themes';
-import { Button } from 'components/ui/button';
+import './styles.css';
+
 type DialogProps = {
   title: string;
   description: string;
@@ -36,7 +37,7 @@ export const Dialog = ({
             <RadixDialog.Description>{description}</RadixDialog.Description>
             <div>{children}</div>
             <RadixDialog.Close>
-              <Button text={'キャンセル'} onClick={() => onClose()} />
+              <RadixButton onClick={() => onClose()}>キャンセル</RadixButton>
             </RadixDialog.Close>
             <RadixDialog.Close>
               <RadixButton onClick={() => onChange()}>

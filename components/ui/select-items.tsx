@@ -6,7 +6,11 @@ type SelectItemsProps = {
   defaultValue?: string | undefined;
 };
 
-const SelectItems = ({ items, onChange, defaultValue }: SelectItemsProps) => {
+export const SelectItems = ({
+  items,
+  onChange,
+  defaultValue,
+}: SelectItemsProps) => {
   return (
     <Select.Root
       defaultValue={defaultValue}
@@ -25,5 +29,3 @@ const SelectItems = ({ items, onChange, defaultValue }: SelectItemsProps) => {
     </Select.Root>
   );
 };
-
-export default SelectItems;

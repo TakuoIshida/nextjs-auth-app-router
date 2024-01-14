@@ -1,5 +1,5 @@
 export const settings = {
-  nodeEnv: process.env.NODE_ENV || 'development',
+  nodeEnv: process.env.NODE_ENV || 'test',
   databaseUrl: process.env.DATABASE_URL || '',
   nextAuthSecret: process.env.NEXTAUTH_SECRET || '',
   nextAuthUrl: process.env.NEXTAUTH_URL || '',

@@ -4,6 +4,7 @@ import { AuthProvider } from 'components/providers/auth-provider';
 import { ErrorBoundaryProvider } from 'components/providers/error-boundery';
 import { SidebarProvider } from 'components/providers/sidebar-provider';
 import ThemeProvider from 'components/providers/theme-provider';
+import { ToastProvider } from 'components/providers/toast-provider';
 import { TrpcProvider } from 'components/providers/trpc-provider';
 import { getServerSession } from 'next-auth';
 import { Suspense } from 'react';
@@ -34,11 +35,13 @@ export default async function RootLayout({ children }: RootLayoutProps) {
           <ErrorBoundaryProvider>
             <AuthProvider session={session}>
               <TrpcProvider>
-                <SidebarProvider>
-                  <Suspense fallback={<div>Suspense...</div>}>
-                    <div>{children}</div>
-                  </Suspense>
-                </SidebarProvider>
+                <Suspense fallback={<div>Suspense...</div>}>
+                  <ToastProvider>
+                    <SidebarProvider>
+                      <div>{children}</div>
+                    </SidebarProvider>
+                  </ToastProvider>
+                </Suspense>
               </TrpcProvider>
             </AuthProvider>
           </ErrorBoundaryProvider>

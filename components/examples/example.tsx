@@ -1,14 +1,17 @@
 'use client';
 
 import { Blockquote, Code, Link, Text } from '@radix-ui/themes';
+import { useToast } from 'components/providers/toast-provider';
 import { Avatar } from 'components/ui/avatar';
+import { Button } from 'components/ui/button';
 import { Callout, calloutLevel } from 'components/ui/callout';
 import { CheckBox } from 'components/ui/check-box';
-import { Dialog } from 'components/ui/dialog';
+import { Dialog } from 'components/ui/dialog/dialog';
 import { HoverCard } from 'components/ui/hover-card';
-import SelectItems from 'components/ui/select-items';
-import TextArea from 'components/ui/text-area';
-import Tooltip from 'components/ui/toast';
+import { SelectItems } from 'components/ui/select-items';
+import { Tabs } from 'components/ui/tabs';
+import { TextArea } from 'components/ui/text-area';
+import { Tooltip } from 'components/ui/tooltip';
 import { useState } from 'react';
 
 const Example = () => {
@@ -16,6 +19,8 @@ const Example = () => {
   const [open, setOpen] = useState(false);
   const selectItems = ['apple', 'banana', 'orange'];
   const [selectedItem, setSelectedItem] = useState<string>(selectItems[0]);
+
+  const { isToastOpen, handleToastOpen } = useToast();
 
   return (
     <div>
@@ -39,7 +44,9 @@ const Example = () => {
       <Callout text={'warning'} level={calloutLevel.warning} />
 
       <CheckBox checked={checked} onChange={() => setChecked(!checked)} />
-      <button onClick={() => setOpen(true)}>open dialog</button>
+      <div>
+        <button onClick={() => setOpen(true)}>open dialog</button>
+      </div>
       <Dialog
         title={'title'}
         description={'description'}
@@ -74,6 +81,20 @@ const Example = () => {
       <Tooltip content="hogehoge">
         <Text>tooltip</Text>
       </Tooltip>
+      <Tabs
+        selectedLabel={'apple'}
+        labels={['apple', 'banana', 'orange']}
+        onChange={(v) => console.log(v)}
+      />
+      <div>
+        <Button
+          text={'open toast'}
+          onClick={() => {
+            console.log('open toast');
+            handleToastOpen('message', 'descriptionsss');
+          }}
+        />
+      </div>
     </div>
   );
 };

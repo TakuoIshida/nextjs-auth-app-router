@@ -21,7 +21,6 @@ export default function TopPage() {
       <p>{session.user?.email}</p>
       <Button text={'LogOut'} onClick={() => void signOut()} />
       <BackLink text={'to top'} path={'/'} />
-      <BackLink text={'to examples'} path={'/examples'} />
       <Example />
     </div>
   );

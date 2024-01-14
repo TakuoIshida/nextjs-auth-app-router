@@ -1,15 +1,10 @@
-import { TextArea as RadixTextArea, Responsive } from '@radix-ui/themes';
+import { Tooltip as RadixTooltip } from '@radix-ui/themes';
 
-type TextAreaProps = {
-  placeholder?: string;
-  size?: Responsive<'3' | '1' | '2'> | undefined;
+type TooltipProps = {
+  content: string;
+  children: React.ReactNode;
 };
 
-const TextArea = ({
-  placeholder = '入力してください',
-  size = '3',
-}: TextAreaProps) => {
-  return <RadixTextArea size={size} placeholder={placeholder} />;
+export const Tooltip = ({ content, children }: TooltipProps) => {
+  return <RadixTooltip content={content}>{children}</RadixTooltip>;
 };
-
-export default TextArea;
