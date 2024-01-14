@@ -10,7 +10,7 @@ import {
 
 type HoverCardProps = {
   fallback: string;
-  src: string;
+  src?: string;
 };
 
 export const HoverCard = ({ src, fallback }: HoverCardProps) => {
@@ -25,12 +25,7 @@ export const HoverCard = ({ src, fallback }: HoverCardProps) => {
         </RadixHoverCard.Trigger>
         <RadixHoverCard.Content>
           <Flex gap="4">
-            <Avatar
-              size="3"
-              fallback="R"
-              radius="full"
-              src="https://pbs.twimg.com/profile_images/1337055608613253126/r_eiMp2H_400x400.png"
-            />
+            <Avatar size="3" fallback={fallback} radius="full" src={src} />
             <Box>
               <Heading size="3" as="h3">
                 Radix
