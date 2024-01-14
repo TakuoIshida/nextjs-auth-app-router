@@ -6,5 +6,9 @@ type ButtonProps = {
 };
 
 export const Button = ({ text, onClick }: ButtonProps) => {
-  return <RadixButton onClick={() => onClick()}>{text}</RadixButton>;
+  return (
+    <>
+      <RadixButton onClick={() => onClick()}>{text}</RadixButton>
+    </>
+  );
 };
