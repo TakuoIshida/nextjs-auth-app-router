@@ -1,10 +1,16 @@
+import { CheckedState } from '@radix-ui/react-checkbox';
 import { Checkbox as RadixCheckBox } from '@radix-ui/themes';
 
 type CheckBoxProps = {
   checked: boolean;
-  onChange: () => void;
+  onChange: (checked: CheckedState) => void;
 };
 
 export const CheckBox = ({ checked, onChange }: CheckBoxProps) => {
-  return <RadixCheckBox checked={checked} onChange={onChange} />;
+  return (
+    <RadixCheckBox
+      checked={checked}
+      onCheckedChange={(checked) => onChange(checked)}
+    />
+  );
 };
