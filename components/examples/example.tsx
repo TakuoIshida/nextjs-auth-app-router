@@ -1,6 +1,6 @@
 'use client';
 
-import { Blockquote, Code, Link } from '@radix-ui/themes';
+import { Blockquote, Code, Link, Text } from '@radix-ui/themes';
 import { Avatar } from 'components/ui/avatar';
 import { Callout, calloutLevel } from 'components/ui/callout';
 import { CheckBox } from 'components/ui/check-box';
@@ -8,6 +8,7 @@ import { Dialog } from 'components/ui/dialog';
 import { HoverCard } from 'components/ui/hover-card';
 import SelectItems from 'components/ui/select-items';
 import TextArea from 'components/ui/text-area';
+import Tooltip from 'components/ui/toast';
 import { useState } from 'react';
 
 const Example = () => {
@@ -70,6 +71,9 @@ const Example = () => {
         onChange={(v) => setSelectedItem(v)}
         defaultValue="apple"
       />
+      <Tooltip content="hogehoge">
+        <Text>tooltip</Text>
+      </Tooltip>
     </div>
   );
 };
