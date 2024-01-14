@@ -7,7 +7,7 @@ type BackLinkProps = {
   path: string;
 };
 
-const BackLink = ({ text, path }: BackLinkProps) => {
+export const BackLink = ({ text, path }: BackLinkProps) => {
   const r = useRouter();
 
   return (
@@ -17,5 +17,3 @@ const BackLink = ({ text, path }: BackLinkProps) => {
     </Button>
   );
 };
-
-export default BackLink;

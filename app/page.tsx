@@ -1,7 +1,8 @@
 'use client';
 
-import BackLink from '@/components/ui/back-link';
-import Button from '@/components/ui/button';
+import Example from '@/components/examples/example';
+import { BackLink } from '@/components/ui/back-link';
+import { Button } from '@/components/ui/button';
 import { signOut, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 
@@ -20,6 +21,8 @@ export default function TopPage() {
       <p>{session.user?.email}</p>
       <Button text={'LogOut'} onClick={() => void signOut()} />
       <BackLink text={'to top'} path={'/'} />
+      <BackLink text={'to examples'} path={'/examples'} />
+      <Example />
     </div>
   );
 }

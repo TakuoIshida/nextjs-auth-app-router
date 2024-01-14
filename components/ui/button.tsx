@@ -5,8 +5,6 @@ type ButtonProps = {
   onClick: () => void;
 };
 
-const Button = ({ text, onClick, ...restProps }: ButtonProps) => {
+export const Button = ({ text, onClick, ...restProps }: ButtonProps) => {
   return <RadixButton onClick={() => onClick}>{text}</RadixButton>;
 };
-
-export default Button;
