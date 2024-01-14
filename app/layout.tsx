@@ -1,10 +1,10 @@
-import { authOptions } from '@/app/api/auth/[...nextauth]/auth';
-import '@/app/globals.css';
-import { AuthProvider } from '@/components/providers/auth-provider';
-import { ErrorBoundaryProvider } from '@/components/providers/error-boundery';
-import { SidebarProvider } from '@/components/providers/sidebar-provider';
-import ThemeProvider from '@/components/providers/theme-provider';
-import { TrpcProvider } from '@/components/providers/trpc-provider';
+import { authOptions } from 'app/api/auth/[...nextauth]/auth';
+import 'app/globals.css';
+import { AuthProvider } from 'components/providers/auth-provider';
+import { ErrorBoundaryProvider } from 'components/providers/error-boundery';
+import { SidebarProvider } from 'components/providers/sidebar-provider';
+import ThemeProvider from 'components/providers/theme-provider';
+import { TrpcProvider } from 'components/providers/trpc-provider';
 import { getServerSession } from 'next-auth';
 import { Suspense } from 'react';
 

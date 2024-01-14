@@ -6,8 +6,8 @@ import {
   type NextAuthOptions,
 } from 'next-auth';
 
+import { db } from 'app/api/auth/db';
 import Auth0 from 'next-auth/providers/auth0';
-import { db } from '../db';
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`

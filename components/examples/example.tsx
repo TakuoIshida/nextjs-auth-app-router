@@ -1,8 +1,8 @@
-import { Avatar } from '@/components/ui/avatar';
+import { Avatar } from 'components/ui/avatar';
 
-import { Callout } from '@/components/ui/callout';
 import { Blockquote, Code, Link } from '@radix-ui/themes';
-import { calloutLevel } from '../ui/callout';
+import { Callout, calloutLevel } from 'components/ui/callout';
+import { CheckBox } from 'components/ui/check-box';
 
 const Example = () => {
   return (
@@ -25,6 +25,7 @@ const Example = () => {
       />
       <Callout text={'hello'} level={calloutLevel.info} />
       <Callout text={'warning'} level={calloutLevel.warning} />
+      <CheckBox checked={true} onChange={() => console.log('check')} />
     </div>
   );
 };

@@ -1,8 +1,8 @@
 'use client';
 
-import Example from '@/components/examples/example';
-import { BackLink } from '@/components/ui/back-link';
-import { Button } from '@/components/ui/button';
+import Example from 'components/examples/example';
+import { BackLink } from 'components/ui/back-link';
+import { Button } from 'components/ui/button';
 import { signOut, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 

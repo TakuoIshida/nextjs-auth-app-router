@@ -1,6 +1,6 @@
 'use client';
 
-import { LoginButton } from '@/components/login-button';
+import { LoginButton } from 'components/login-button';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 

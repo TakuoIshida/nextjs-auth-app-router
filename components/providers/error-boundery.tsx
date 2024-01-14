@@ -1,6 +1,6 @@
 'use client';
 
-import GlobalError from '@/app/global-error';
+import GlobalError from 'app/global-error';
 import { ErrorBoundary } from 'react-error-boundary';
 
 export const ErrorBoundaryProvider: React.FC<{ children: React.ReactNode }> = ({
