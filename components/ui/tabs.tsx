@@ -6,7 +6,7 @@ type TabsProps = {
   onChange: (value: string) => void;
 };
 
-const Tabs = ({ selectedLabel, labels, onChange }: TabsProps) => {
+export const Tabs = ({ selectedLabel, labels, onChange }: TabsProps) => {
   return (
     <RadixTabs.Root defaultValue={selectedLabel}>
       <RadixTabs.List>
@@ -27,5 +27,3 @@ const Tabs = ({ selectedLabel, labels, onChange }: TabsProps) => {
     </RadixTabs.Root>
   );
 };
-
-export default Tabs;

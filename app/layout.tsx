@@ -6,6 +6,7 @@ import { SidebarProvider } from 'components/providers/sidebar-provider';
 import ThemeProvider from 'components/providers/theme-provider';
 import { ToastProvider } from 'components/providers/toast-provider';
 import { TrpcProvider } from 'components/providers/trpc-provider';
+import { Loading } from 'components/ui/loading';
 import { getServerSession } from 'next-auth';
 import { Suspense } from 'react';
 
@@ -35,7 +36,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
           <ErrorBoundaryProvider>
             <AuthProvider session={session}>
               <TrpcProvider>
-                <Suspense fallback={<div>Suspense...</div>}>
+                <Suspense fallback={<Loading />}>
                   <ToastProvider>
                     <SidebarProvider>
                       <div>{children}</div>
