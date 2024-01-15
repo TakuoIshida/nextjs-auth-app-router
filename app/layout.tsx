@@ -3,7 +3,7 @@ import 'app/globals.css';
 import { AuthProvider } from 'components/providers/auth-provider';
 import { ErrorBoundaryProvider } from 'components/providers/error-boundery';
 import { SidebarProvider } from 'components/providers/sidebar-provider';
-import ThemeProvider from 'components/providers/theme-provider';
+import { ThemeProvider } from 'components/providers/theme-provider';
 import { ToastProvider } from 'components/providers/toast-provider';
 import { TrpcProvider } from 'components/providers/trpc-provider';
 import { MenuAppBar } from 'components/ui/app-bar';

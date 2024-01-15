@@ -6,7 +6,7 @@ import '@radix-ui/themes/styles.css';
 import { ThemeProviderProps } from 'next-themes/dist/types';
 import { settings } from 'settings/settings';
 
-const ThemeProvider = ({ children }: ThemeProviderProps) => {
+export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   return (
     <Theme
       appearance="light"
@@ -23,5 +23,3 @@ const ThemeProvider = ({ children }: ThemeProviderProps) => {
     </Theme>
   );
 };
-
-export default ThemeProvider;
