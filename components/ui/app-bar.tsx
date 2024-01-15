@@ -11,10 +11,12 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { signOut } from 'next-auth/react';
 import * as React from 'react';
+import { SideBar } from './side-bar';
 
 // TODO: muiからradix ui に変更する
 export const MenuAppBar = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [open, setOpen] = React.useState(false);
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -36,6 +38,7 @@ export const MenuAppBar = () => {
             color="inherit"
             aria-label="menu"
             sx={{ mr: 2 }}
+            onClick={() => setOpen(true)}
           >
             <MenuIcon />
           </IconButton>
@@ -57,7 +60,7 @@ export const MenuAppBar = () => {
               id="menu-appbar"
               anchorEl={anchorEl}
               anchorOrigin={{
-                vertical: 'top',
+                vertical: 'bottom',
                 horizontal: 'right',
               }}
               keepMounted
@@ -74,6 +77,7 @@ export const MenuAppBar = () => {
           </div>
         </Toolbar>
       </AppBar>
+      <SideBar open={open} setOpen={setOpen} />
     </Box>
   );
 };

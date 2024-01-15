@@ -15,6 +15,7 @@ export default function TopPage() {
       This is TopPage
       <p>{session.user?.name}</p>
       <p>{session.user?.email}</p>
+      <p>{session.user?.image}</p>
     </>
   );
 }
