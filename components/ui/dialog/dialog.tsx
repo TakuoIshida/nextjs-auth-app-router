@@ -1,20 +1,16 @@
 'use client';
 
-import { Cross2Icon } from '@radix-ui/react-icons';
-import {
-  IconButton,
-  Button as RadixButton,
-  Dialog as RadixDialog,
-} from '@radix-ui/themes';
-import './styles.css';
+import * as RadixDialog from '@radix-ui/react-dialog';
+import { Flex, Button as RadixButton } from '@radix-ui/themes';
+import { Button } from '../button';
 
 type DialogProps = {
   title: string;
   description: string;
   onChangeLabel: string;
-  open: boolean;
   onClose: () => void;
   onChange: () => void;
+  triggerRef: React.ForwardedRef<HTMLButtonElement>;
   children: React.ReactNode;
 };
 
@@ -22,41 +18,40 @@ export const Dialog = ({
   title,
   description,
   onChangeLabel,
-  open,
   onClose,
   onChange,
+  triggerRef,
   children,
 }: DialogProps) => {
   return (
-    <>
-      {open && (
-        <RadixDialog.Root open={open}>
-          <RadixDialog.Trigger></RadixDialog.Trigger>
-          <RadixDialog.Content>
-            <RadixDialog.Title>{title}</RadixDialog.Title>
-            <RadixDialog.Description>{description}</RadixDialog.Description>
-            <div>{children}</div>
-            <RadixDialog.Close>
-              <RadixButton onClick={() => onClose()}>キャンセル</RadixButton>
-            </RadixDialog.Close>
-            <RadixDialog.Close>
-              <RadixButton onClick={() => onChange()}>
-                {onChangeLabel}
-              </RadixButton>
-            </RadixDialog.Close>
-            <RadixDialog.Close>
-              <IconButton
-                onClick={() => onClose()}
-                color="gray"
-                radius="full"
-                size="1"
-              >
-                <Cross2Icon />
-              </IconButton>
-            </RadixDialog.Close>
-          </RadixDialog.Content>
-        </RadixDialog.Root>
-      )}
-    </>
+    <RadixDialog.Root>
+      <RadixDialog.Trigger asChild>
+        <Button
+          text="Dialog open"
+          onClick={() => {
+            console.log('Dialog open');
+          }}
+          preventDefault={true}
+          forwardedRef={triggerRef}
+        />
+      </RadixDialog.Trigger>
+      <RadixDialog.Content style={{ maxWidth: 450 }}>
+        <RadixDialog.Title>{title}</RadixDialog.Title>
+        <RadixDialog.Description>{description}</RadixDialog.Description>
+        <div>{children}</div>
+        <Flex gap="3" mt="4" justify="end">
+          <RadixDialog.Close>
+            <RadixButton variant="soft" color="gray" onClick={() => onClose()}>
+              キャンセル
+            </RadixButton>
+          </RadixDialog.Close>
+          <RadixDialog.Close>
+            <RadixButton onClick={() => onChange()}>
+              {onChangeLabel}
+            </RadixButton>
+          </RadixDialog.Close>
+        </Flex>
+      </RadixDialog.Content>
+    </RadixDialog.Root>
   );
 };
