@@ -3,8 +3,8 @@
 import { CssBaseline } from '@mui/material';
 import { Theme, ThemePanel } from '@radix-ui/themes';
 import '@radix-ui/themes/styles.css';
+import { settings } from 'const/settings';
 import { ThemeProviderProps } from 'next-themes/dist/types';
-import { settings } from 'settings/settings';
 
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   return (
