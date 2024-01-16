@@ -1,3 +1,4 @@
+// Settings for the application
 export const settings = {
   nodeEnv: process.env.NODE_ENV || 'test',
   databaseUrl: process.env.DATABASE_URL || '',
