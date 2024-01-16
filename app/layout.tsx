@@ -1,5 +1,4 @@
 import { authOptions } from 'app/api/auth/[...nextauth]/auth';
-import 'app/globals.css';
 import { AuthProvider } from 'components/providers/auth-provider';
 import { ErrorBoundaryProvider } from 'components/providers/error-boundery';
 import { ThemeProvider } from 'components/providers/theme-provider';
