@@ -26,7 +26,7 @@ export const MenuAppBar = () => {
     setAnchorEl(null);
   };
 
-  const handleLogout = () => signOut();
+  const handleLogout = () => signOut({ callbackUrl: '/' });
 
   return (
     <Box sx={{ flexGrow: 1 }}>

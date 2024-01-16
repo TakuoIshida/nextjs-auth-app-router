@@ -1,6 +1,13 @@
 'use client';
 
-import { Blockquote, Code, Link, Text } from '@radix-ui/themes';
+import {
+  Blockquote,
+  Code,
+  Flex,
+  Link,
+  Text,
+  TextField,
+} from '@radix-ui/themes';
 import { useToast } from 'components/providers/toast-provider';
 import { Avatar } from 'components/ui/avatar';
 import { Button } from 'components/ui/button';
@@ -13,7 +20,7 @@ import { Tabs } from 'components/ui/tabs';
 import { TextArea } from 'components/ui/text-area';
 import { Tooltip } from 'components/ui/tooltip';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { createRef, useEffect, useState } from 'react';
 
 const Example = () => {
   const [checked, setChecked] = useState(false);
@@ -30,6 +37,8 @@ const Example = () => {
   }, [params]);
 
   const { handleToastOpen } = useToast();
+
+  const buttonRef = createRef<HTMLButtonElement>();
 
   return (
     <>
@@ -53,13 +62,10 @@ const Example = () => {
       <Callout text={'warning'} level={calloutLevel.warning} />
 
       <CheckBox checked={checked} onChange={() => setChecked(!checked)} />
-      <div>
-        <button onClick={() => setOpen(true)}>open dialog</button>
-      </div>
+
       <Dialog
-        title={'title'}
-        description={'description'}
-        open={open}
+        title={'ユーザー新規作成'}
+        description={'名前とメールアドレスを入力してください'}
         onClose={() => {
           console.log('Close');
           setOpen(false);
@@ -69,10 +75,28 @@ const Example = () => {
           console.log('保存!!');
           setOpen(false);
         }}
+        triggerRef={buttonRef}
       >
-        <>
-          <div>hello</div>
-        </>
+        <Flex direction="column" gap="3">
+          <label>
+            <Text as="div" size="2" mb="1" weight="bold">
+              Name
+            </Text>
+            <TextField.Input
+              defaultValue="Freja Johnsen"
+              placeholder="Enter your full name"
+            />
+          </label>
+          <label>
+            <Text as="div" size="2" mb="1" weight="bold">
+              Email
+            </Text>
+            <TextField.Input
+              defaultValue="freja@example.com"
+              placeholder="Enter your email"
+            />
+          </label>
+        </Flex>
       </Dialog>
       <TextArea />
       <p>selectedItem: {selectedItem}</p>
