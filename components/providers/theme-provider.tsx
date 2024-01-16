@@ -18,8 +18,8 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
     >
       <CssBaseline />
       {children}
-      {/*  NOTE: themeをpreviewするためのtool */}
-      {settings.nodeEnv === 'development' && <ThemePanel />}
+      {/*  NOTE: themeをpreviewするためのtool cmd+c */}
+      {settings.nodeEnv === 'development' && <ThemePanel defaultOpen={false} />}
     </Theme>
   );
 };
