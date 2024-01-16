@@ -9,12 +9,14 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { signOut } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 import * as React from 'react';
+import { Avatar } from './avatar';
 import { SideBar } from './side-bar';
 
 // TODO: muiからradix ui に変更する
 export const MenuAppBar = () => {
+  const { data: session } = useSession();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [open, setOpen] = React.useState(false);
 
@@ -54,7 +56,11 @@ export const MenuAppBar = () => {
               onClick={handleMenu}
               color="inherit"
             >
-              <AccountCircle />
+              {session ? (
+                <Avatar src={session.user.image || ''} />
+              ) : (
+                <AccountCircle />
+              )}
             </IconButton>
             <Menu
               id="menu-appbar"
