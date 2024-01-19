@@ -1,1 +1,0 @@
-// domainのusecaseごとのhooksを実装する

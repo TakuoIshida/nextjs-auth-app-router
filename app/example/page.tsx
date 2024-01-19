@@ -1,16 +1,18 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
-import Example from '../../components/examples/example';
+import Example from 'components/examples/example';
+import { useExample } from 'components/examples/example.hooks';
 
 const ExamplePage = () => {
-  const searchParams = useSearchParams();
-  const tab = searchParams.get('tab');
-  console.log('tab', tab);
+  const { postExample } = useExample({ inputText: 'helloooo' });
+  if (postExample.isLoading || !postExample.data) {
+    return <div>postExample loading...</div>;
+  }
 
   return (
     <>
       <div>ExamplePage</div>
+      <p>postExample: {postExample.data.greeting}</p>
       <Example />
     </>
   );
