@@ -20,13 +20,13 @@ import { Tabs } from 'components/ui/tabs';
 import { TextArea } from 'components/ui/text-area';
 import { Tooltip } from 'components/ui/tooltip';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { createRef, useEffect, useState } from 'react';
+import { createRef, useEffect, useMemo, useState } from 'react';
 
 const Example = () => {
   const [checked, setChecked] = useState(false);
   const [open, setOpen] = useState(false);
   const selectItems = ['apple', 'banana', 'orange'];
-  const tabMenus = ['user', 'account', 'role'];
+  const tabMenus = useMemo(() => ['user', 'account', 'role'], []);
 
   const [selectedItem, setSelectedItem] = useState<string>(selectItems[0]);
   const router = useRouter();
@@ -34,7 +34,7 @@ const Example = () => {
   const [tab, setTab] = useState<string>(tabMenus[0]);
   useEffect(() => {
     setTab(params.get('tab') ?? tabMenus[0]);
-  }, [params]);
+  }, [params, tabMenus]);
 
   const { handleToastOpen } = useToast();
 
