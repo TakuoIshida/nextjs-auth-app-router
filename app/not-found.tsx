@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 
-export const NotFound = () => {
+const NotFound = () => {
   return (
     <div role="alert">
       <p>Something went wrong:</p>
@@ -10,3 +10,4 @@ export const NotFound = () => {
     </div>
   );
 };
+export default NotFound;
