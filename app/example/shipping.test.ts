@@ -4,7 +4,6 @@ import {
   getShoppingCart,
   reduceShoppingItem,
   removeShoppingItem,
-  shoppingCartItems,
 } from './shipping';
 
 describe('ショッピングカートサービス', () => {
@@ -20,8 +19,8 @@ describe('ショッピングカートサービス', () => {
       quantity: 1,
     };
     const expected = addShoppingItem(newItem);
-    const actual = shoppingCartItems;
-    expect(actual).toEqual(expected);
+    expect(expected.length).toEqual(1);
+    expect(expected).toContainEqual(newItem);
   });
 
   test('ショッピングカートに既存の商品を追加すると、itemの数は変わらず、quantityが+1される', () => {
@@ -71,7 +70,7 @@ describe('ショッピングカートサービス', () => {
     addShoppingItem(newItem);
     const expected = reduceShoppingItem('9999');
 
-    expect(expected).toEqual(shoppingCartItems);
+    expect(expected).toEqual([newItem]);
     expect(expected.find((item) => item.id === '1')?.quantity).toEqual(2);
   });
 
@@ -93,8 +92,8 @@ describe('ショッピングカートサービス', () => {
     const expected = removeShoppingItem('1');
 
     expect(expected.length).toEqual(1);
-    expect(expected.find((item) => item.id === '1')).toEqual(undefined);
-    expect(expected.find((item) => item.id === '2')).toEqual(otherItem);
+    expect(expected).not.toContainEqual(newItem);
+    expect(expected).toContainEqual(otherItem);
   });
 
   test('ショッピングカートから対象のidに該当するItemがない場合、何もせずカートを返す', () => {
@@ -115,8 +114,8 @@ describe('ショッピングカートサービス', () => {
     const expected = removeShoppingItem('9999');
 
     expect(expected.length).toEqual(2);
-    expect(expected.find((item) => item.id === '1')).toEqual(newItem);
-    expect(expected.find((item) => item.id === '2')).toEqual(otherItem);
+    expect(expected).toContainEqual(newItem);
+    expect(expected).toContainEqual(otherItem);
   });
 
   test('ショッピングカートを空にする', () => {
