@@ -158,4 +158,22 @@ describe('ショッピングカートサービス', () => {
     expect(items.length).toEqual(2);
     expect(totalPrice).toEqual(8000); // 1000 * 2 + 2000 * 3
   });
+
+  test('jestでmockを使用してみる', () => {
+    const myMock = jest.fn();
+
+    myMock
+      .mockReturnValueOnce(10)
+      .mockReturnValueOnce('x')
+      .mockReturnValue(true);
+
+    console.log(myMock(), myMock(), myMock(), myMock());
+    // > 10, 'x', true, true
+
+    expect(myMock).toHaveBeenCalledTimes(4); // 4回呼ばれたか
+    expect(myMock.mock.calls.length).toBe(4);
+    expect(myMock.mock.results[0].value).toBe(10);
+    expect(myMock.mock.results[1].value).toBe('x');
+    expect(myMock.mock.results[2].value).toBeTruthy();
+  });
 });
